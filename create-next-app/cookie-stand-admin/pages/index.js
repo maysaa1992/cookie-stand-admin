@@ -1,4 +1,4 @@
-import Head from "next/head"
+// import Head from "next/head"
 import { useState } from "react"
 // import {replies} from '@/data'
 
@@ -7,24 +7,24 @@ import { useState } from "react"
 
 
 export default function Home() {
-  const [location, serlocation ] = useState('no location yet ')
-  const [Minimum, serMinimum ] = useState('no Minimum Customers per Hour yet ')
-  const [Maximum, serMaximum ] = useState('no Maximum Customers per Hour yet ')
-  const [Avarage, serAvarage ] = useState('no Avarage Cookie per Sale yet ')
+  const [location, setlocation ] = useState('no location yet ')
+  const [Minimum, setMinimum ] = useState('no Minimum Customers per Hour yet ')
+  const [Maximum, setMaximum ] = useState('no Maximum Customers per Hour yet ')
+  const [Avarage, setAvarage ] = useState('no Avarage Cookie per Sale yet ')
 
 
-  async function submitHandler(event){
+   function submitHandler(event){
     event.preventDefault()
     // alert (event.target.location.value)
-    serlocation(event.target.location.value)
-    serMinimum(event.target.Minimum.value)
-    serMaximum(event.target.Maximum.value)
-    serAvarage(event.target.Avarage.value)
+    setlocation(event.target.location.value)
+    setMinimum(event.target.Minimum.value)
+    setMaximum(event.target.Maximum.value)
+    setAvarage(event.target.Avarage.value)
 
-    await console.log(location)
-    await console.log(Minimum)
-    await console.log(Maximum)
-    await console.log(Avarage)
+    console.log(location)
+    console.log(Minimum)
+    console.log(Maximum)
+    console.log(Avarage)
 
 
 
@@ -37,22 +37,19 @@ export default function Home() {
 
   return (
     <>
-      <head>
-        <title>Home</title>
-      </head>
-      <body className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen">
          {/* Header*/}
          <Header />
 
         
-        <main className="flex flex-col items-center py-4 space-y-8 flex-grow">
+        <div className="flex flex-col items-center py-4 space-y-8 flex-grow">
           {/* form */}
           <Form handler={submitHandler} />
           <p className="flex items-center  p-4 text-black-50">Report Table Coming Soon ...</p>
-        </main>
+        </div>
         {/* Footer*/}
         <Footer />
-      </body >
+      </div >
 
     </>
   )
