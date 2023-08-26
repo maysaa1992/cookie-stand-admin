@@ -1,16 +1,28 @@
 import CookieStandAdmin from "@/components/CookieStandAdmin"
-// import { useAuth } from "@/contexts/authintication"
-// import Login from "@/components/LogIn"
-
+import { useAuth } from "@/contexts/authintication"
+import LoginForm from "@/components/LoginForm"
+import useResource from "@/hooks/useResource"
 
 export default function Home() {
 
-  // const { user, login } = useAuth()
+  const { user, login, logout } = useAuth()
+  const { resources, loading, createResource, deleteResource } = useResource()
   return (
-    <>
-        <CookieStandAdmin/>
-     
-   </>
-   );
- 
-  }
+    <div>
+      {user ? (
+        <>
+          <CookieStandAdmin
+          stands={resources}
+          loading={loading}
+          onDelete={deleteResource}
+          onCreate={createResource}
+          logout={logout} />
+        </>
+      ) : (
+        <>
+          <LoginForm />
+        </>
+      )}
+    </div>
+  )
+}
